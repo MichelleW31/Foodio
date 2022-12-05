@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Foodio/precache-manifest.ddde51ef0eee4f6f26bbd3851378c208.js"
+  "/Foodio/precache-manifest.e2f8f74dd860aac189cfc332a947ed11.js"
 );
 
 workbox.clientsClaim();
