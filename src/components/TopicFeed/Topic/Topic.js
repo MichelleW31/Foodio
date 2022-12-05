@@ -1,30 +1,28 @@
-import React from 'react';
-import MyStyles from './Topic.css';
+import React from "react";
+import MyStyles from "./Topic.css";
 
-class Topic extends React.Component {
-    imgUrl = require(`../../../images/${this.props.imgSrc}`);
+const Topic = (props) => {
+  const imgUrl = require(`../../../images/${props.recipe.imgPath}`);
 
-    selectPost = () => {
-        this.props.incrementStep();
-        this.props.showPost(this.props.recipe);
-    };
+  const selectPost = () => {
+    props.incrementStep();
+    props.setPost(props.recipe);
+  };
 
-
-    render(){
-        return (
-            <div className={MyStyles.Topic} onClick={this.selectPost}>
-                <div className={MyStyles.TopicImage} style={{
-                    backgroundImage: 'url(' + this.imgUrl + ')',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center center',
-                    backgroundRepeat: 'no-repeat',
-                }}>
-                </div>
-                <h2 className={MyStyles.TopicTitle}>{this.props.title}</h2>
-            </div>
-        )
-    }
-
-}
+  return (
+    <div className={MyStyles.Topic} onClick={selectPost}>
+      <div
+        className={MyStyles.TopicImage}
+        style={{
+          backgroundImage: "url(" + imgUrl + ")",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          backgroundRepeat: "no-repeat",
+        }}
+      ></div>
+      <h2 className={MyStyles.TopicTitle}>{props.recipe.title}</h2>
+    </div>
+  );
+};
 
 export default Topic;

@@ -1,40 +1,34 @@
-import React from 'react';
-import LikeSend from '../../LikeSend/LikeSend';
-import MyStyles from './Post.css';
+import React from "react";
+import LikeSend from "../../LikeSend/LikeSend";
+import MyStyles from "./Post.css";
 
-class Post extends React.Component {
+const Post = (props) => {
+  const imgUrl = require(`../../../images/${props.recipe.imgPath}`);
 
-    imgUrl = require(`../../../images/${this.props.recipe.imgPath}`);
+  const likePost = () => {
+    props.toggleLikes(props.recipe);
+    props.recipe.liked = !props.recipe.liked;
+  };
 
-    likePost = () =>{
-      this.props.toggleLikes(this.props.recipe);
-      this.props.recipe.liked = !this.props.recipe.liked;
-    };
+  return (
+    <div className={MyStyles.Post}>
+      <div className={MyStyles.Copy}>
+        <h3 className={MyStyles.Title}>{props.recipe.title}</h3>
+        <h4 className={MyStyles.Level}>Level: {props.recipe.level}</h4>
+        <h5 className={MyStyles.Time}>Cook time: {props.recipe.cooktime}</h5>
+      </div>
 
-    render() {
-        return(
-            <div className={MyStyles.Post}>
-                <div className={MyStyles.Copy}>
-                    <h3 className={MyStyles.Title}>{this.props.recipe.title}</h3>
-                    <h4 className={MyStyles.Level}>Level: {this.props.recipe.level}</h4>
-                    <h5 className={MyStyles.Time}>Cook time: {this.props.recipe.cooktime}</h5>
-                </div>
+      <div className={MyStyles.ImageDiv}>
+        <img className={MyStyles.Image} src={imgUrl} alt="" />
+      </div>
 
-                <div className={MyStyles.ImageDiv}>
-                    <img className={MyStyles.Image} src={this.imgUrl} alt=""/>
-                </div>
+      <div className={MyStyles.Sendoff}>
+        <LikeSend recipe={props.recipe} likePost={likePost} />
+      </div>
 
-                <div className={MyStyles.Sendoff}>
-                    <LikeSend
-                        recipe={this.props.recipe}
-                        likePost={this.likePost}/>
-                </div>
-
-                <hr/>
-            </div>
-        )
-}
-
-}
+      <hr />
+    </div>
+  );
+};
 
 export default Post;

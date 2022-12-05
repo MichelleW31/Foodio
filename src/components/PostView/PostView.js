@@ -1,22 +1,22 @@
-import React from 'react';
-import MyStyles from './PostView.css';
+import React from "react";
+import MyStyles from "./PostView.css";
 import Post from "../PostFeed/Post/Post";
 
-const postview = (props) => {
-    let chosenTopic = props.post;
+const Postview = (props) => {
+  return (
+    <div className={MyStyles.Postview}>
+      <div className={MyStyles.Back}>
+        <i className={MyStyles.fa_angle_left}></i>
+        <p onClick={props.back}>Back to recipes</p>
+      </div>
 
-    return (
-        <div className={MyStyles.Postview}>
-            <div className={MyStyles.Back}>
-                <i className={MyStyles.fa_angle_left}></i>
-                <p onClick={props.back}>Back to recipes</p>
-            </div>
-
-            <Post key={chosenTopic.title}
-                  recipe={chosenTopic}
-                  toggleLikes={props.toggleLikes} />
-        </div>
-    )
+      <Post
+        key={props.post.title}
+        recipe={props.post}
+        toggleLikes={props.toggleLikes}
+      />
+    </div>
+  );
 };
 
-export default postview;
+export default Postview;

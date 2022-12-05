@@ -1,17 +1,19 @@
-import React from 'react';
+import React from "react";
 import MyStyles from "./Likes.css";
 import Post from "../../PostFeed/Post/Post";
 
-const likes = (props) => {
-  let likeArray = props.like;
+const Likes = (props) => {
+  let selectedLikesArray = props.likes;
   let classes = MyStyles.NoLikes;
 
   let layout = <p>You currently have no likes</p>;
 
-  if(likeArray.length > 0){
+  if (selectedLikesArray.length > 0) {
     classes = MyStyles.Likes;
-    layout = likeArray.map((like) => {
-      return <Post key={like.title} recipe={like} toggleLikes={props.toggleLikes} />
+    layout = selectedLikesArray.map((like) => {
+      return (
+        <Post key={like.title} recipe={like} toggleLikes={props.toggleLikes} />
+      );
     });
   }
 
@@ -23,12 +25,10 @@ const likes = (props) => {
           <p onClick={props.back}>Back to recipes</p>
         </div>
         <h3 className={MyStyles.Title}>Likes</h3>
-        <div className={classes}>
-          {layout}
-        </div>
+        <div className={classes}>{layout}</div>
       </div>
     </div>
-  )
+  );
 };
 
-export default likes;
+export default Likes;
