@@ -3,12 +3,7 @@ import { recipeList } from "../../helpers";
 import Post from "./Post/Post";
 import MyStyles from "./PostFeed.css";
 
-const Postfeed = (props) => {
-  //Shuffles array so that the featured recipes are different after every reload.
-  function shuffle(array) {
-    return array.sort(() => Math.random() - 0.5);
-  }
-
+const Postfeed = ({ toggleLikes, step }) => {
   let recArr = [...recipeList];
 
   //Maps through recipes and returns a post for each one.
@@ -17,8 +12,8 @@ const Postfeed = (props) => {
       <Post
         key={recipe.title}
         recipe={recipe}
-        toggleLikes={props.toggleLikes}
-        step={props.step}
+        toggleLikes={toggleLikes}
+        step={step}
       />
     );
   });

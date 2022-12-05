@@ -2,19 +2,15 @@ import React from "react";
 import MyStyles from "./PostView.css";
 import Post from "../PostFeed/Post/Post";
 
-const Postview = (props) => {
+const Postview = ({ back, post, toggleLikes }) => {
   return (
     <div className={MyStyles.Postview}>
       <div className={MyStyles.Back}>
         <i className={MyStyles.fa_angle_left}></i>
-        <p onClick={props.back}>Back to recipes</p>
+        <p onClick={back}>Back to recipes</p>
       </div>
 
-      <Post
-        key={props.post.title}
-        recipe={props.post}
-        toggleLikes={props.toggleLikes}
-      />
+      <Post key={post.title} recipe={post} toggleLikes={toggleLikes} />
     </div>
   );
 };
