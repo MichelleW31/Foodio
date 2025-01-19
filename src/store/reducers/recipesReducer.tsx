@@ -1,11 +1,10 @@
 // BASE MODULES
 
 // CUSTOM MODULES
-import { SET_RECIPES, SET_SELECTED_RECIPE } from '../actions/actionTypes';
+import { SET_RECIPE } from '../actions/actionTypes';
 
 const initialState = {
-  recipes: [],
-  selected_recipe: {
+  recipe: {
     title: '',
     preparationMinutes: '',
     cookingMinutes: '',
@@ -20,15 +19,10 @@ const recipesReducer = (
   action: { type: string; payload: any }
 ) => {
   switch (action.type) {
-    case SET_RECIPES:
+    case SET_RECIPE:
       return {
         ...state,
-        recipes: action.payload,
-      };
-    case SET_SELECTED_RECIPE:
-      return {
-        ...state,
-        selected_recipe: action.payload,
+        recipe: action.payload,
       };
     default:
       return state;

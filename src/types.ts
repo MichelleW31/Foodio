@@ -1,3 +1,8 @@
+export enum Path {
+  ROOT = '/',
+  LIKES = '/likes',
+  RECIPE = '/recipe',
+}
 export interface IRecipe {
   title: string;
   preparationMinutes: string;
@@ -9,4 +14,10 @@ export interface IRecipe {
 
 export interface IRecipes {
   recipes: IRecipe[];
+}
+
+export interface IState {
+  recipes: {
+    recipe: IRecipe;
+  };
 }
