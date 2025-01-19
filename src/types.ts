@@ -3,7 +3,7 @@ export interface IRecipe {
   preparationMinutes: string;
   cookingMinutes: string;
   sourceUrl: string;
-  instructions: string;
+  summary: string;
   image: string;
 }
 

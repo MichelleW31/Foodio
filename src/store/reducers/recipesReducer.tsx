@@ -10,7 +10,7 @@ const initialState = {
     preparationMinutes: '',
     cookingMinutes: '',
     sourceUrl: '',
-    instructions: '',
+    summary: '',
     image: '',
   },
 };

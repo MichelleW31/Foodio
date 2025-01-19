@@ -1,0 +1,28 @@
+@import '../../variables/variables.scss';
+
+.StoryContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 20px;
+
+  .StoryImage {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: 0 20px 5px;
+  }
+
+  .StoryTitle {
+    color: $blue;
+    font-family: 'Inter';
+    font-size: 12px;
+    font-weight: 600;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+  }
+}
