@@ -1,0 +1,4 @@
+// RECIPES
+
+export const SET_RECIPES = 'SET_RECIPES';
+export const SET_SELECTED_RECIPE = 'SET_SELECTED_RECIPE';
