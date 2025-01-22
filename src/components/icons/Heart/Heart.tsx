@@ -8,7 +8,6 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 const Heart = () => {
   return (
     <section>
-      {' '}
       <FontAwesomeIcon icon={faHeart as IconProp} color="#467e8d" size="2x" />
     </section>
   );

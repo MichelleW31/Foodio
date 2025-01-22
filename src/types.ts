@@ -5,10 +5,9 @@ export enum Path {
 }
 export interface IRecipe {
   title: string;
-  preparationMinutes: string;
-  cookingMinutes: string;
+  readyInMinutes: string;
   sourceUrl: string;
-  summary: string;
+  servings: string;
   image: string;
 }
 

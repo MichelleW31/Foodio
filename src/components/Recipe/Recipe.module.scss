@@ -1,0 +1,61 @@
+@import '../../variables/variables.scss';
+
+.RecipeContainer {
+  margin-bottom: 70px;
+  width: 100%;
+
+  .ImageContainer {
+    margin: 20px 0 0;
+    width: 100%;
+  }
+
+  .Image {
+    width: 100%;
+  }
+
+  .InfoContainer {
+    color: #3f3f3f;
+    padding: 0 20px;
+    word-wrap: break-word;
+
+    .Title {
+      color: $blue;
+      font-size: 17px;
+      font-weight: 600;
+      margin-top: 15px;
+    }
+
+    .Label {
+      font-weight: 500;
+    }
+
+    .ReadyInCopy {
+      font-style: italic;
+      // margin-bottom: 3px;
+    }
+
+    .ServingsCopy {
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+  }
+
+  .UrlSection {
+    align-items: flex-end;
+    color: #3f3f3f;
+    padding: 0 15px;
+    display: flex;
+
+    .Label {
+      font-weight: 500;
+    }
+
+    .UrlCopy {
+      color: #000;
+      font-size: 15px;
+      font-weight: 400;
+      margin-left: 15px;
+      text-decoration: underline;
+    }
+  }
+}
