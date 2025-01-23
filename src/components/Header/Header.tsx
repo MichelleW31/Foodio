@@ -7,9 +7,8 @@ import styles from './Header.module.scss';
 const Header = () => {
   return (
     <section className={styles.HeaderContainer}>
-      <Heart />
+      <Heart color="#467e8d" />
       <h2 className={styles.HeaderCopy}>Foodio</h2>
-      {/* <i className={MyStyles.fa_paper_plane}></i> */}
     </section>
   );
 };

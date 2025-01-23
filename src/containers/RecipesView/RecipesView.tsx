@@ -10,7 +10,7 @@ interface RecipesViewProps {
 
 const RecipesView = ({ recipes }: RecipesViewProps) => {
   const recipesScroll = recipes.map((recipe) => {
-    return <Recipe recipe={recipe} />;
+    return <Recipe recipe={recipe} key={recipe.title} />;
   });
 
   return <div>{recipesScroll}</div>;

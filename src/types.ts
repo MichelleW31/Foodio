@@ -18,5 +18,6 @@ export interface IRecipes {
 export interface IState {
   recipes: {
     recipe: IRecipe;
+    likes: IRecipe[];
   };
 }

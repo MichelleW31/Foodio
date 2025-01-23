@@ -3,6 +3,7 @@
 // CUSTOM MODULES
 import { IRecipe } from '../../types';
 import ExLink from '../icons/ExLink/ExLink';
+import LikeShare from '../LikeShare/LikeShare';
 import styles from './Recipe.module.scss';
 
 interface RecipeProps {
@@ -10,8 +11,6 @@ interface RecipeProps {
 }
 
 const Recipe = ({ recipe }: RecipeProps) => {
-  console.log('recipe', recipe);
-
   return (
     <section className={styles.RecipeContainer}>
       <section className={styles.InfoContainer}>
@@ -28,6 +27,8 @@ const Recipe = ({ recipe }: RecipeProps) => {
       <section className={styles.ImageContainer}>
         <img className={styles.Image} src={recipe.image} />
       </section>
+
+      <LikeShare recipe={recipe} />
 
       <section className={styles.UrlSection}>
         <ExLink />

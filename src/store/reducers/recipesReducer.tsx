@@ -1,17 +1,17 @@
 // BASE MODULES
 
 // CUSTOM MODULES
-import { SET_RECIPE } from '../actions/actionTypes';
+import { SET_LIKES, SET_RECIPE } from '../actions/actionTypes';
 
 const initialState = {
   recipe: {
     title: '',
-    preparationMinutes: '',
-    cookingMinutes: '',
+    readyInMinutes: '',
     sourceUrl: '',
-    summary: '',
+    servings: '',
     image: '',
   },
+  likes: [],
 };
 
 const recipesReducer = (
@@ -23,6 +23,11 @@ const recipesReducer = (
       return {
         ...state,
         recipe: action.payload,
+      };
+    case SET_LIKES:
+      return {
+        ...state,
+        likes: action.payload,
       };
     default:
       return state;
