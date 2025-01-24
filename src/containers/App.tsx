@@ -26,7 +26,20 @@ const App = () => {
         }`
       )
       .then((response) => {
-        setRecipes(response.data.recipes);
+        const recipes = response.data.recipes;
+
+        const mappedRecipes = recipes.map((recipe: IRecipe) => {
+          return {
+            title: recipe.title,
+            readyInMinutes: recipe.readyInMinutes,
+            sourceUrl: recipe.sourceUrl,
+            servings: recipe.servings,
+            image: recipe.image,
+            liked: false,
+          };
+        });
+
+        setRecipes(mappedRecipes);
       })
       .catch((error) => {
         throw new Error(`Get recipes error, ${error}`);

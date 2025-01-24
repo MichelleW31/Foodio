@@ -10,6 +10,7 @@ const initialState = {
     sourceUrl: '',
     servings: '',
     image: '',
+    // liked: false,
   },
   likes: [],
 };

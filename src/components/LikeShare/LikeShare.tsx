@@ -1,6 +1,6 @@
 // BASE MODULES
 import { connect } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 // CUSTOM MODULES
 import Heart from '../icons/Heart/Heart';
@@ -16,33 +16,25 @@ interface LikeShareProps {
 }
 
 const LikeShare = ({ likes, setLikesArray, recipe }: LikeShareProps) => {
-  const [isLiked, setIsLiked] = useState<boolean>(false);
+  const [selectedRecipe, setSelectedRecipe] = useState<IRecipe>(recipe);
 
   const setUpLikes = () => {
-    if (!isLiked) {
-      setIsLiked(true);
-      setLikesArray([...likes, recipe]);
+    if (!selectedRecipe.liked) {
+      setSelectedRecipe({ ...selectedRecipe, liked: true });
+      setLikesArray([...likes, { ...selectedRecipe, liked: true }]);
     } else {
-      const newLikesArray = likes.filter((like) => like.title !== recipe.title);
+      const newLikesArray = likes.filter(
+        (like) => like.title !== selectedRecipe.title
+      );
 
-      setIsLiked(false);
+      setSelectedRecipe({ ...selectedRecipe, liked: false });
       setLikesArray(newLikesArray);
     }
   };
 
-  useEffect(() => {
-    likes.forEach((like) => {
-      if (like.title === recipe.title) {
-        setIsLiked(true);
-      } else {
-        setIsLiked(false);
-      }
-    });
-  });
-
   return (
     <section className={styles.LikeShareContainer}>
-      {isLiked ? (
+      {selectedRecipe.liked ? (
         <Heart color="#000" setUpLikes={setUpLikes} />
       ) : (
         <HeartOutline color="#000" setUpLikes={setUpLikes} />

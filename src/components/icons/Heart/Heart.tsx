@@ -7,10 +7,11 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 interface HeartProps {
   color: string;
-  setUpLikes: () => void;
+  setUpLikes?: () => void;
+  goToLikes?: () => void;
 }
 
-const Heart = ({ color, setUpLikes }: HeartProps) => {
+const Heart = ({ color, setUpLikes, goToLikes }: HeartProps) => {
   return (
     <section>
       <FontAwesomeIcon
@@ -18,7 +19,11 @@ const Heart = ({ color, setUpLikes }: HeartProps) => {
         color={color}
         size="lg"
         onClick={() => {
-          setUpLikes();
+          if (setUpLikes) {
+            setUpLikes();
+          } else if (goToLikes) {
+            goToLikes();
+          }
         }}
       />
     </section>

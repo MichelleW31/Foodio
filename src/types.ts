@@ -9,6 +9,7 @@ export interface IRecipe {
   sourceUrl: string;
   servings: string;
   image: string;
+  liked: boolean;
 }
 
 export interface IRecipes {
