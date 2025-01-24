@@ -22,7 +22,6 @@
       color: $blue;
       font-size: 17px;
       font-weight: 600;
-      margin-top: 15px;
     }
 
     .Label {
@@ -36,14 +35,13 @@
 
     .ServingsCopy {
       font-style: italic;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
   }
 
   .UrlSection {
     align-items: flex-end;
     color: #3f3f3f;
-    padding: 0 15px;
     display: flex;
 
     .Label {

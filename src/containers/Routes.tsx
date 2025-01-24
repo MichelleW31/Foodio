@@ -2,7 +2,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 // CUSTOM MODULES
-import SelectedRecipe from '../components/SelectedRecipe/SelectedRecipe';
+import SelectedRecipe from './SelectedRecipe/SelectedRecipe';
 import RecipesView from './RecipesView/RecipesView';
 import { IRecipe, Path } from '../types';
 

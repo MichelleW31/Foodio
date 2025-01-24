@@ -13,6 +13,12 @@ interface RecipeProps {
 const Recipe = ({ recipe }: RecipeProps) => {
   return (
     <section className={styles.RecipeContainer}>
+      <section className={styles.ImageContainer}>
+        <img className={styles.Image} src={recipe.image} />
+      </section>
+
+      <LikeShare recipe={recipe} />
+
       <section className={styles.InfoContainer}>
         <p className={styles.Title}>{recipe.title}</p>
         <p className={styles.ReadyInCopy}>
@@ -22,20 +28,14 @@ const Recipe = ({ recipe }: RecipeProps) => {
         <p className={styles.ServingsCopy}>
           <span className={styles.Label}>Servings:</span> {recipe.servings}
         </p>
-      </section>
 
-      <section className={styles.ImageContainer}>
-        <img className={styles.Image} src={recipe.image} />
-      </section>
+        <section className={styles.UrlSection}>
+          <ExLink />
 
-      <LikeShare recipe={recipe} />
-
-      <section className={styles.UrlSection}>
-        <ExLink />
-
-        <a className={styles.UrlCopy} href={recipe.sourceUrl} target="_blank">
-          Check out recipe at Foodista.com
-        </a>
+          <a className={styles.UrlCopy} href={recipe.sourceUrl} target="_blank">
+            Check out recipe at Foodista.com
+          </a>
+        </section>
       </section>
     </section>
   );

@@ -7,6 +7,7 @@ import Heart from '../icons/Heart/Heart';
 import HeartOutline from '../icons/HeartOutline/HeartOutline';
 import { setLikes } from '../../store/actions/recipesActions';
 import { IRecipe, IState } from '../../types';
+import styles from './LikeShare.module.scss';
 
 interface LikeShareProps {
   likes: IRecipe[];
@@ -40,7 +41,7 @@ const LikeShare = ({ likes, setLikesArray, recipe }: LikeShareProps) => {
   });
 
   return (
-    <section>
+    <section className={styles.LikeShareContainer}>
       {isLiked ? (
         <Heart color="#000" setUpLikes={setUpLikes} />
       ) : (
