@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 
 // CUSTOM MODULES
 import { IRecipe, IState } from '../../types';
+import Recipe from '../../components/Recipe/Recipe';
+import BackButton from '../../components/BackButton/BackButton';
+import styles from './SelectedRecipe.module.scss';
 
 interface SelectedRecipeProps {
   selectedRecipe: IRecipe;
@@ -11,7 +14,12 @@ interface SelectedRecipeProps {
 const SelectedRecipe = ({ selectedRecipe }: SelectedRecipeProps) => {
   console.log('selected recipe', selectedRecipe);
 
-  return <section>SelectedRecipe</section>;
+  return (
+    <section className={styles.SelectedRecipeContainer}>
+      <BackButton copy="Back to Recipes" />
+      <Recipe recipe={selectedRecipe} />
+    </section>
+  );
 };
 
 const mapStateToProps = (state: IState) => {
