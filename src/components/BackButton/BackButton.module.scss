@@ -1,0 +1,13 @@
+@import '../../variables/variables.scss';
+
+.BackButtonContainer {
+  background-color: $blue;
+  padding: 10px 0;
+
+  .BackButtonCopy {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+  }
+}

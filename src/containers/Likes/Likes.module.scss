@@ -1,0 +1,12 @@
+@import '../../variables/variables.scss';
+
+.LikesContainer {
+  .Title {
+    color: $blue;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 40px 0 20px;
+    padding-left: 20px;
+    // text-align: center;
+  }
+}
