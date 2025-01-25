@@ -9,6 +9,7 @@ import Share from '../icons/Share/Share';
 import { setLikes } from '../../store/actions/recipesActions';
 import { IRecipe, IState } from '../../types';
 import ShareModal from '../ShareModal/ShareModal';
+import ResultsModal from '../ResultsModal/ResultsModal';
 import styles from './LikeShare.module.scss';
 
 interface LikeShareProps {
@@ -20,6 +21,8 @@ interface LikeShareProps {
 const LikeShare = ({ likes, setLikesArray, recipe }: LikeShareProps) => {
   const [selectedRecipe, setSelectedRecipe] = useState<IRecipe>(recipe);
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
+  const [isResultsModalOpen, setIsResultsModalOpen] = useState<boolean>(false);
+  const [hasSendingError, setHasSendingError] = useState<boolean>(false);
 
   const setUpLikes = () => {
     if (!selectedRecipe.liked) {
@@ -44,7 +47,21 @@ const LikeShare = ({ likes, setLikesArray, recipe }: LikeShareProps) => {
       <ShareModal
         modalOpen={isShareModalOpen}
         setModalOpen={setIsShareModalOpen}
+        setShowMessageResults={setIsResultsModalOpen}
+        setHasSendingError={setHasSendingError}
+        recipeLink={recipe.sourceUrl}
       />
+
+      <ResultsModal
+        modalOpen={isResultsModalOpen}
+        setModalOpen={setIsResultsModalOpen}
+        copy={
+          hasSendingError
+            ? 'There was a problem sharing the recipe. Please try again later.'
+            : 'Your recipe has been shared successfully!'
+        }
+      />
+
       {selectedRecipe.liked ? (
         <Heart color="#000" setUpLikes={setUpLikes} />
       ) : (

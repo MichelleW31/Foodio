@@ -5,17 +5,23 @@ import Modal from 'react-modal';
 
 // CUSTOM MODULES
 import XIcon from '../icons/XIcon/XIcon';
-import Button from 'react';
 import styles from './ShareModal.module.scss';
 
 interface ShareModalProps {
   modalOpen: boolean;
   setModalOpen: (boolean: boolean) => void;
+  setShowMessageResults: (boolean: boolean) => void;
+  setHasSendingError: (boolean: boolean) => void;
+  recipeLink: string;
 }
 
-const shareRecipe = () => {};
-
-const ShareModal = ({ modalOpen, setModalOpen }: ShareModalProps) => {
+const ShareModal = ({
+  modalOpen,
+  setModalOpen,
+  setShowMessageResults,
+  setHasSendingError,
+  recipeLink,
+}: ShareModalProps) => {
   const [senderName, setSenderName] = useState<string>('');
   const [senderEmail, setSenderEmail] = useState<string>('');
 
@@ -34,7 +40,6 @@ const ShareModal = ({ modalOpen, setModalOpen }: ShareModalProps) => {
       }
     });
 
-    console.log('newArray', newArray);
     setRecipients(newArray);
   };
 
@@ -44,6 +49,46 @@ const ShareModal = ({ modalOpen, setModalOpen }: ShareModalProps) => {
 
   const removeAdditionalRecipient = () => {
     setRecipients((previousArr) => previousArr.slice(0, -1));
+  };
+
+  const clearInputs = () => {
+    setSenderName('');
+    setSenderEmail('');
+    setRecipients(['']);
+  };
+
+  // SHARE RECIPE
+  const shareRecipe = () => {
+    recipients.forEach((recipient) => {
+      emailjs
+        .send(
+          import.meta.env.VITE_SERVICE_ID,
+          import.meta.env.VITE_TEMPLATE_ID,
+          {
+            name: senderName,
+            from_email: senderEmail,
+            to_email: recipient,
+            link: recipeLink,
+          },
+          { publicKey: import.meta.env.VITE_PUBLIC_KEY }
+        )
+        .then(
+          (result) => {
+            console.log('Message sent successfully:', result.text);
+            setShowMessageResults(true);
+            setModalOpen(false);
+            setHasSendingError(false);
+            clearInputs();
+          },
+          (error) => {
+            console.error('Error sending message:', error);
+            setShowMessageResults(true);
+            setModalOpen(false);
+            setHasSendingError(true);
+            clearInputs();
+          }
+        );
+    });
   };
 
   return (
@@ -82,7 +127,7 @@ const ShareModal = ({ modalOpen, setModalOpen }: ShareModalProps) => {
 
         <h3>Who would like to share this recipe with?</h3>
         {recipients.map((recipient, i) => (
-          <section className={styles.Recipient}>
+          <section className={styles.Recipient} key={i}>
             <p>Recipient</p>
 
             <input
