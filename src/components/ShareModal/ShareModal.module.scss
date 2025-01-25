@@ -1,13 +1,85 @@
+@import '../../variables/variables.scss';
+
 .Modal {
   background: rgb(255, 255, 255);
   border: 1px solid rgb(204, 204, 204);
   color: #3f3f3f;
   border-radius: 4px;
-  height: 350px;
+  height: auto;
   inset: 40px;
   margin-top: 180px;
   outline: none;
   overflow: auto;
   padding: 20px;
   position: absolute;
+
+  .Title {
+    margin-top: 30px;
+  }
+
+  .RecipeTitle {
+    color: $blue;
+    font-size: 16px;
+  }
+
+  .FormContainer {
+    // margin-bottom: 20px;
+  }
+
+  .SenderInfo {
+    margin: 25px 0px 20px;
+  }
+
+  .Label {
+    font-weight: 600;
+  }
+
+  .Input {
+    background-color: transparent;
+    border-color: $blue;
+    border-radius: 3px;
+    color: #3f3f3f;
+    margin-bottom: 15px;
+    padding: 5px 5px;
+    width: 100%;
+  }
+
+  .ShareCopy {
+    color: $blue;
+    font-size: 16px;
+    // text-align: center;
+    width: 70%;
+  }
+
+  .RecipientContainer {
+    margin-top: 13px;
+  }
+
+  .AddRemoveContainer {
+  }
+
+  .AddRemoveRecipientCopy {
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .ButtonContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .Button {
+    background-color: $blue;
+    border: none;
+    border-radius: 2px;
+    font-weight: 600;
+    margin-top: 25px;
+    padding: 7px 20px;
+  }
+
+  .Error {
+    color: red;
+    margin-top: 40px;
+    text-align: center;
+  }
 }

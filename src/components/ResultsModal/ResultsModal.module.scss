@@ -1,3 +1,5 @@
+@import '../../variables/variables.scss';
+
 .Modal {
   background: rgb(255, 255, 255);
   border: 1px solid rgb(204, 204, 204);
@@ -10,4 +12,23 @@
   overflow: auto;
   padding: 20px;
   position: absolute;
+}
+
+.ConfirmationCopy {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.ButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.Button {
+  background-color: $blue;
+  border: none;
+  border-radius: 2px;
+  font-weight: 500;
+  margin-top: 25px;
+  padding: 7px 20px;
 }

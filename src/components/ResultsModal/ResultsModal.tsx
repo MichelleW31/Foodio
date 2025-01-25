@@ -19,17 +19,20 @@ const ResultsModal = ({ modalOpen, setModalOpen, copy }: ResultsModalProps) => {
     <Modal
       isOpen={modalOpen}
       onRequestClose={closeModal}
+      ariaHideApp={false}
       className={styles.Modal}
     >
-      <p>{copy}</p>
+      <p className={styles.ConfirmationCopy}>{copy}</p>
 
-      <button
-        type="button"
-        onClick={() => setModalOpen(false)}
-        className={styles.Button}
-      >
-        Close
-      </button>
+      <section className={styles.ButtonContainer}>
+        <button
+          type="button"
+          onClick={() => setModalOpen(false)}
+          className={styles.Button}
+        >
+          Close
+        </button>
+      </section>
     </Modal>
   );
 };

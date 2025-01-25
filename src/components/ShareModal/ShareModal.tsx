@@ -138,14 +138,16 @@ const ShareModal = ({
     <Modal
       isOpen={modalOpen}
       onRequestClose={closeModal}
+      ariaHideApp={false}
       className={styles.Modal}
     >
       <XIcon color="#467e8d" closeModal={closeModal} />
 
-      <h2>Share recipe</h2>
+      <h2 className={styles.Title}>Share Recipe</h2>
+      <h2 className={styles.RecipeTitle}>{recipe.title}</h2>
       <section className={styles.FormContainer}>
-        <section>
-          <p>Your Name</p>
+        <section className={styles.SenderInfo}>
+          <p className={styles.Label}>Your Name</p>
           <input
             value={senderName}
             onChange={(e) => {
@@ -156,7 +158,7 @@ const ShareModal = ({
             className={styles.Input}
           />
 
-          <p>Your Email</p>
+          <p className={styles.Label}>Your Email</p>
           <input
             value={senderEmail}
             onChange={(e) => {
@@ -168,10 +170,12 @@ const ShareModal = ({
           />
         </section>
 
-        <h3>Who would like to share this recipe with?</h3>
+        <h3 className={styles.ShareCopy}>
+          Who would like to share this recipe with?
+        </h3>
         {recipients.map((recipient, i) => (
-          <section className={styles.Recipient} key={i}>
-            <p>Recipient</p>
+          <section className={styles.RecipientContainer} key={i}>
+            <p className={styles.Label}>Recipient</p>
 
             <input
               value={recipients[i]}
@@ -187,7 +191,7 @@ const ShareModal = ({
 
         <section className={styles.AddRemoveContainer}>
           <p
-            className={styles.AddRemoveStudentCopy}
+            className={styles.AddRemoveRecipientCopy}
             onClick={() => addAdditionalRecipient()}
           >
             Add Additional Recipient +
@@ -195,7 +199,7 @@ const ShareModal = ({
 
           {recipients.length > 1 && (
             <p
-              className={styles.AddRemoveStudentCopy}
+              className={styles.AddRemoveRecipientCopy}
               onClick={() => removeAdditionalRecipient()}
             >
               Remove Recipient -
@@ -203,9 +207,11 @@ const ShareModal = ({
           )}
         </section>
 
-        <button type="button" onClick={shareRecipe} className={styles.Button}>
-          Share Recipe
-        </button>
+        <section className={styles.ButtonContainer}>
+          <button type="button" onClick={shareRecipe} className={styles.Button}>
+            Share Recipe
+          </button>
+        </section>
 
         {/* Error Messaging */}
         {showErrorMessage && (
