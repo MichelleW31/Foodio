@@ -22,3 +22,8 @@ export interface IState {
     likes: IRecipe[];
   };
 }
+
+export interface IErrors {
+  errorStatus: boolean;
+  errorMessage: string;
+}

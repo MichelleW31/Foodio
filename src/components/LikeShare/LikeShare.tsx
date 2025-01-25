@@ -23,6 +23,7 @@ const LikeShare = ({ likes, setLikesArray, recipe }: LikeShareProps) => {
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
   const [isResultsModalOpen, setIsResultsModalOpen] = useState<boolean>(false);
   const [hasSendingError, setHasSendingError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const setUpLikes = () => {
     if (!selectedRecipe.liked) {
@@ -42,6 +43,11 @@ const LikeShare = ({ likes, setLikesArray, recipe }: LikeShareProps) => {
     setIsShareModalOpen(true);
   };
 
+  const updateErrorCopy =
+    errorMessage === 'The recipients address is corrupted'
+      ? "The recipient's email address is invalid"
+      : errorMessage;
+
   return (
     <section className={styles.LikeShareContainer}>
       <ShareModal
@@ -49,16 +55,19 @@ const LikeShare = ({ likes, setLikesArray, recipe }: LikeShareProps) => {
         setModalOpen={setIsShareModalOpen}
         setShowMessageResults={setIsResultsModalOpen}
         setHasSendingError={setHasSendingError}
-        recipeLink={recipe.sourceUrl}
+        recipe={recipe}
+        setErrorMessage={setErrorMessage}
       />
 
       <ResultsModal
         modalOpen={isResultsModalOpen}
         setModalOpen={setIsResultsModalOpen}
         copy={
-          hasSendingError
-            ? 'There was a problem sharing the recipe. Please try again later.'
-            : 'Your recipe has been shared successfully!'
+          !hasSendingError
+            ? 'Your recipe has been shared successfully!'
+            : errorMessage !== ''
+            ? updateErrorCopy
+            : 'There was a problem sharing the recipe. Please try again later.'
         }
       />
 

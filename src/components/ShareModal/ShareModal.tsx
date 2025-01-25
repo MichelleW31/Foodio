@@ -1,18 +1,20 @@
 // BASE MODULES
 import emailjs from '@emailjs/browser';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Modal from 'react-modal';
 
 // CUSTOM MODULES
 import XIcon from '../icons/XIcon/XIcon';
 import styles from './ShareModal.module.scss';
+import { IErrors, IRecipe } from '../../types';
 
 interface ShareModalProps {
   modalOpen: boolean;
   setModalOpen: (boolean: boolean) => void;
   setShowMessageResults: (boolean: boolean) => void;
   setHasSendingError: (boolean: boolean) => void;
-  recipeLink: string;
+  setErrorMessage: (copy: string) => void;
+  recipe: IRecipe;
 }
 
 const ShareModal = ({
@@ -20,12 +22,22 @@ const ShareModal = ({
   setModalOpen,
   setShowMessageResults,
   setHasSendingError,
-  recipeLink,
+  recipe,
+  setErrorMessage,
 }: ShareModalProps) => {
   const [senderName, setSenderName] = useState<string>('');
   const [senderEmail, setSenderEmail] = useState<string>('');
 
   const [recipients, setRecipients] = useState<string[]>(['']);
+
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [errors, setErrors] = useState<IErrors>({
+    errorStatus: false,
+    errorMessage: '',
+  });
+
+  const { errorStatus, errorMessage } = errors;
+  const errRef = useRef(null);
 
   const closeModal = () => {
     setModalOpen(false);
@@ -57,8 +69,33 @@ const ShareModal = ({
     setRecipients(['']);
   };
 
+  /////////////
+  //ERROR CHECK
+  /////////////
+
+  const errorCheck = (): void => {
+    const credentialsMessage: string = 'Please fill out all fields to proceed.';
+
+    // empty user info error
+    if (senderName === '' || senderEmail === '' || recipients[0] === '') {
+      setErrors({
+        ...errors,
+        errorStatus: true,
+        errorMessage: credentialsMessage,
+      });
+      return;
+    } else {
+      setErrors({ ...errors, errorStatus: false, errorMessage: '' });
+    }
+  };
+
   // SHARE RECIPE
   const shareRecipe = () => {
+    if (errorStatus) {
+      setShowErrorMessage(true);
+      return;
+    }
+
     recipients.forEach((recipient) => {
       emailjs
         .send(
@@ -68,7 +105,8 @@ const ShareModal = ({
             name: senderName,
             from_email: senderEmail,
             to_email: recipient,
-            link: recipeLink,
+            recipe_name: recipe.title,
+            recipe_link: recipe.sourceUrl,
           },
           { publicKey: import.meta.env.VITE_PUBLIC_KEY }
         )
@@ -82,6 +120,7 @@ const ShareModal = ({
           },
           (error) => {
             console.error('Error sending message:', error);
+            setErrorMessage(error.text);
             setShowMessageResults(true);
             setModalOpen(false);
             setHasSendingError(true);
@@ -90,6 +129,10 @@ const ShareModal = ({
         );
     });
   };
+
+  useEffect(() => {
+    errorCheck();
+  }, [senderName, senderEmail, recipients]);
 
   return (
     <Modal
@@ -163,6 +206,13 @@ const ShareModal = ({
         <button type="button" onClick={shareRecipe} className={styles.Button}>
           Share Recipe
         </button>
+
+        {/* Error Messaging */}
+        {showErrorMessage && (
+          <p ref={errRef} aria-live="assertive" className={styles.Error}>
+            {errorMessage}
+          </p>
+        )}
       </section>
     </Modal>
   );
