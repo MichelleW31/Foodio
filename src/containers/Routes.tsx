@@ -9,12 +9,16 @@ import { IRecipe, Path } from '../types';
 
 interface AppRoutesProps {
   recipes: IRecipe[];
+  getRecipes: () => void;
 }
 
-const AppRoutes = ({ recipes }: AppRoutesProps) => {
+const AppRoutes = ({ recipes, getRecipes }: AppRoutesProps) => {
   return (
     <Routes>
-      <Route path={Path.ROOT} element={<RecipesView recipes={recipes} />} />
+      <Route
+        path={Path.ROOT}
+        element={<RecipesView recipes={recipes} getRecipes={getRecipes} />}
+      />
       <Route path={Path.RECIPE} element={<SelectedRecipe />} />
       <Route path={Path.LIKES} element={<Likes />} />
     </Routes>

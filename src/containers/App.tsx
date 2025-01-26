@@ -57,7 +57,7 @@ const App = () => {
           <section className={styles.AppContainer}>
             <Header />
             <RecipeStories recipes={recipes} />
-            <AppRoutes recipes={recipes} />
+            <AppRoutes recipes={recipes} getRecipes={getRecipes} />
           </section>
         </Router>
       </PersistGate>

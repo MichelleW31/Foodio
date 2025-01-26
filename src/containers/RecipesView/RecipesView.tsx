@@ -7,14 +7,33 @@ import styles from './RecipesView.module.scss';
 
 interface RecipesViewProps {
   recipes: IRecipe[];
+  getRecipes: () => void;
 }
 
-const RecipesView = ({ recipes }: RecipesViewProps) => {
+const RecipesView = ({ recipes, getRecipes }: RecipesViewProps) => {
   const recipesScroll = recipes.map((recipe) => {
     return <Recipe recipe={recipe} key={recipe.title} />;
   });
 
-  return <div className={styles.RecipesViewContainer}>{recipesScroll}</div>;
+  const loadNewRecipes = () => {
+    getRecipes();
+
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth', // Optional for smooth scrolling
+      });
+    }, 1000);
+  };
+
+  return (
+    <section className={styles.RecipesViewContainer}>
+      {recipesScroll}
+      <p onClick={() => loadNewRecipes()} className={styles.LoadingCopy}>
+        Load Different Recipes
+      </p>
+    </section>
+  );
 };
 
 export default RecipesView;
