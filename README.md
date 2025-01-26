@@ -4,7 +4,7 @@ Foodio is recipe social feed that utilizes the Spoontacular api to access recipe
 
 Users are allowed to like recipes and also share recipes to valid emails.
 
-Foodio is made using Vite, Axios, and Typescript
+Foodio is made using React, Vite, Axios, and Typescript
 
 https://michellew31.github.io/Foodio/
 
