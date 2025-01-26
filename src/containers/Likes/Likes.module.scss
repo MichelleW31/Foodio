@@ -7,6 +7,11 @@
     font-weight: 600;
     margin: 40px 0 20px;
     padding-left: 20px;
-    // text-align: center;
+
+    @media (min-width: $desktopWidth) {
+      font-size: 27px;
+      margin: 40px 0 40px;
+      padding-left: 40px;
+    }
   }
 }

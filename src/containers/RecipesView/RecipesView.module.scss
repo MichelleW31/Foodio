@@ -1,0 +1,7 @@
+@import '../../variables/variables.scss';
+
+.RecipesViewContainer {
+  @media (min-width: $desktopWidth) {
+    margin-top: 40px;
+  }
+}

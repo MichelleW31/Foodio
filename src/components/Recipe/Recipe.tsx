@@ -15,9 +15,8 @@ const Recipe = ({ recipe }: RecipeProps) => {
     <section className={styles.RecipeContainer}>
       <section className={styles.ImageContainer}>
         <img className={styles.Image} src={recipe.image} />
+        <LikeShare recipe={recipe} />
       </section>
-
-      <LikeShare recipe={recipe} />
 
       <section className={styles.InfoContainer}>
         <p className={styles.Title}>{recipe.title}</p>

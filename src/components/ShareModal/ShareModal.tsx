@@ -89,7 +89,9 @@ const ShareModal = ({
     }
   };
 
+  //////////////
   // SHARE RECIPE
+  //////////////
   const shareRecipe = () => {
     if (errorStatus) {
       setShowErrorMessage(true);

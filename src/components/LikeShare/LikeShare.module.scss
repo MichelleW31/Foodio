@@ -1,4 +1,10 @@
+@import '../../variables/variables.scss';
+
 .LikeShareContainer {
   display: flex;
   padding: 10px 20px 15px;
+
+  @media (min-width: $desktopWidth) {
+    padding: 10px 20px 15px 0;
+  }
 }

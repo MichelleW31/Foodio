@@ -12,8 +12,6 @@ interface SelectedRecipeProps {
 }
 
 const SelectedRecipe = ({ selectedRecipe }: SelectedRecipeProps) => {
-  console.log('selected recipe', selectedRecipe);
-
   return (
     <section className={styles.SelectedRecipeContainer}>
       <BackButton copy="Back to Recipes" />

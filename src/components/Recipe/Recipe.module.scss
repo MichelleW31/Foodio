@@ -4,13 +4,26 @@
   margin-bottom: 70px;
   width: 100%;
 
+  @media (min-width: $desktopWidth) {
+    display: flex;
+  }
+
   .ImageContainer {
     // margin: 20px 0 0;
     width: 100%;
+
+    @media (min-width: $desktopWidth) {
+      margin: 0 170px 0 40px;
+      width: 25%;
+    }
   }
 
   .Image {
     width: 100%;
+
+    @media (min-width: $desktopWidth) {
+      border-radius: 3px;
+    }
   }
 
   .InfoContainer {
@@ -18,24 +31,47 @@
     padding: 0 20px;
     word-wrap: break-word;
 
+    @media (min-width: $desktopWidth) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0;
+    }
+
     .Title {
       color: $blue;
       font-size: 17px;
       font-weight: 600;
+
+      @media (min-width: $desktopWidth) {
+        font-size: 22px;
+      }
     }
 
     .Label {
       font-weight: 500;
+
+      @media (min-width: $desktopWidth) {
+        font-size: 18px;
+      }
     }
 
     .ReadyInCopy {
       font-style: italic;
-      // margin-bottom: 3px;
+
+      @media (min-width: $desktopWidth) {
+        font-size: 18px;
+      }
     }
 
     .ServingsCopy {
       font-style: italic;
       margin-bottom: 15px;
+
+      @media (min-width: $desktopWidth) {
+        font-size: 18px;
+        margin-bottom: 60px;
+      }
     }
   }
 
@@ -44,16 +80,16 @@
     color: #3f3f3f;
     display: flex;
 
-    .Label {
-      font-weight: 500;
-    }
-
     .UrlCopy {
       color: #000;
       font-size: 15px;
       font-weight: 400;
       margin-left: 15px;
       text-decoration: underline;
+
+      @media (min-width: $desktopWidth) {
+        font-size: 17px;
+      }
     }
   }
 }
