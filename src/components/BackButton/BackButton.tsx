@@ -6,14 +6,14 @@ import styles from './BackButton.module.scss';
 
 interface BackButtonProps {
   copy: string;
-  //   path: string;
+  path: string;
 }
 
-const BackButton = ({ copy }: BackButtonProps) => {
+const BackButton = ({ copy, path }: BackButtonProps) => {
   const navigate = useNavigate();
 
   const goBack = () => {
-    navigate(-1);
+    navigate(path);
   };
 
   return (

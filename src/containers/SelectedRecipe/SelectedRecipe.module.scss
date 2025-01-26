@@ -1,7 +1,9 @@
 @import '../../variables/variables.scss';
 
 .SelectedRecipeContainer {
-  @media (min-width: $desktopWidth) {
-    // margin-top: 40px;
+  .RecipeSectionContainer {
+    @media (min-width: $desktopWidth) {
+      margin-top: 150px;
+    }
   }
 }

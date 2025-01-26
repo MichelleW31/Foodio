@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 // CUSTOM MODULES
-import { IRecipe, IState } from '../../types';
+import { IRecipe, IState, Path } from '../../types';
 import Recipe from '../../components/Recipe/Recipe';
 import BackButton from '../../components/BackButton/BackButton';
 import styles from './Likes.module.scss';
@@ -18,7 +18,7 @@ const Likes = ({ likes }: LikesProps) => {
 
   return (
     <section className={styles.LikesContainer}>
-      <BackButton copy="Back To Recipes" />
+      <BackButton copy="Back To Recipes" path={Path.ROOT} />
       <p className={styles.Title}>Likes</p>
       {likesView}
     </section>
