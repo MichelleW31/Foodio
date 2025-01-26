@@ -1,7 +1,7 @@
 // BASE MODULES
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
@@ -53,7 +53,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Router>
+        <Router basename="/Foodio">
           <section className={styles.AppContainer}>
             <Header />
             <RecipeStories recipes={recipes} />
