@@ -13,6 +13,12 @@
   padding: 20px;
   position: absolute;
 
+  @media (min-width: $desktopWidth) {
+    margin: 120px auto;
+    height: 700px;
+    width: 30%;
+  }
+
   .Title {
     margin-top: 30px;
   }
@@ -75,6 +81,10 @@
     font-weight: 600;
     margin-top: 25px;
     padding: 7px 20px;
+  }
+
+  .Button:hover {
+    cursor: pointer;
   }
 
   .Error {

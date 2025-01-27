@@ -12,11 +12,21 @@
   overflow: auto;
   padding: 20px;
   position: absolute;
+
+  @media (min-width: $desktopWidth) {
+    margin: 170px auto;
+    height: 300px;
+    width: 30%;
+  }
 }
 
 .ConfirmationCopy {
   margin-top: 100px;
   text-align: center;
+
+  @media (min-width: $desktopWidth) {
+    margin-top: 90px;
+  }
 }
 
 .ButtonContainer {
@@ -31,4 +41,8 @@
   font-weight: 500;
   margin-top: 25px;
   padding: 7px 20px;
+}
+
+.Button:hover {
+  cursor: pointer;
 }

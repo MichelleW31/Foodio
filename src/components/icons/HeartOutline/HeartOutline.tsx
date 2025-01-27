@@ -4,6 +4,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 // CUSTOM MODULES
+import styles from './HeartOutline.module.scss';
 
 interface HeartOutlineProps {
   color: string;
@@ -12,7 +13,7 @@ interface HeartOutlineProps {
 
 const HeartOutline = ({ color, setUpLikes }: HeartOutlineProps) => {
   return (
-    <section>
+    <section className={styles.HeartOutlineContainer}>
       <FontAwesomeIcon
         icon={faHeart as IconProp}
         color={color}
