@@ -1,7 +1,7 @@
 export enum Path {
   ROOT = '/Foodio',
-  LIKES = '/likes',
-  RECIPE = '/recipe',
+  LIKES = '/Foodio/likes',
+  RECIPE = '/Foodio/recipe',
 }
 export interface IRecipe {
   title: string;
