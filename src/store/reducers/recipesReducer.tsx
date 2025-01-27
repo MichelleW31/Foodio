@@ -21,7 +21,6 @@ const recipesReducer = (
 ) => {
   switch (action.type) {
     case SET_RECIPE:
-      console.log('state', state);
       return {
         ...state,
         recipe: action.payload,

@@ -13,10 +13,16 @@ const Header = () => {
     navigate(Path.LIKES);
   };
 
+  const backToHome = () => {
+    navigate(Path.ROOT);
+  };
+
   return (
     <section className={styles.HeaderContainer}>
       <Heart color="#467e8d" goToLikes={goToLikes} />
-      <h2 className={styles.HeaderCopy}>Foodio</h2>
+      <h2 className={styles.HeaderCopy} onClick={() => backToHome()}>
+        Foodio
+      </h2>
     </section>
   );
 };
