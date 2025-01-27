@@ -1,5 +1,5 @@
 export enum Path {
-  ROOT = '/',
+  ROOT = '/Foodio',
   LIKES = '/likes',
   RECIPE = '/recipe',
 }
