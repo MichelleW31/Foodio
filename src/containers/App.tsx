@@ -53,7 +53,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Router basename={Path.ROOT}>
+        <Router>
           <section className={styles.AppContainer}>
             <Header />
             <RecipeStories recipes={recipes} />
