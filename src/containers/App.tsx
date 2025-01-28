@@ -10,7 +10,7 @@ import styles from './App.module.scss';
 import { store, persistor } from '../store/store';
 import './App.css';
 import Header from '../components/Header/Header';
-import { IRecipe, Path } from '../types';
+import { IRecipe } from '../types';
 import RecipeStories from './RecipeStories/RecipeStories';
 import AppRoutes from './Routes';
 
