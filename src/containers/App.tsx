@@ -10,7 +10,7 @@ import styles from './App.module.scss';
 import { store, persistor } from '../store/store';
 import './App.css';
 import Header from '../components/Header/Header';
-import { IRecipe } from '../types';
+import { IRecipe, Path } from '../types';
 import RecipeStories from './RecipeStories/RecipeStories';
 import AppRoutes from './Routes';
 
@@ -53,7 +53,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Router>
+        <Router basename={Path.ROOT}>
           <section className={styles.AppContainer}>
             <Header />
             <RecipeStories recipes={recipes} />
